@@ -1,0 +1,365 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #3F403F;
+  text-align: center;
+}
+
+.container{
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0, 0, 0, 0.5); /* Optional for darkening effect */
+backdrop-filter: blur(10px);
+z-index: 1;
+display: none; /* Initially hidden */
+align-items: center;
+justify-content: center;
+}
+
+.game{
+  height: 60vmin;
+  width: 60vmin;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5vmin;
+  margin-left: 45px;
+}
+
+.box{
+  height: 18vmin;
+  width: 18vmin;
+  background-color: #CED0CE;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.8);
+  font-size: 8vmin;
+  color: #3F403F;
+}
+
+
+.box.winner::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: inherit;
+filter: blur(5px);
+z-index: -1;
+border-radius: 1rem; /* Match the border-radius of the buttons */
+}
+
+.box.winner {
+animation: winnerAnimation 2s infinite; /* Adjust the duration and iteration as needed */
+transform: scale(1.2); /* Enlarge the winning buttons */
+transition: transform 0.5s;
+z-index: 1;
+}
+
+
+.reset{
+  display: flex;
+  justify-content: center;
+}
+
+
+/*the reset button animation*/
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+  margin-left: 25px;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: .3s;
+  background-color: #475841;
+  align-items: center;
+}
+
+.button:hover .svgIcon {
+  width: 50px;
+  transition-duration: .3s;
+  transform: translateY(60%);
+}
+
+.button::before {
+  position: absolute;
+  top: -20px;
+  content: "Reset";
+  color: white;
+  transition-duration: .3s;
+  font-size: 2px;
+}
+
+.button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .3s;
+}
+
+.msg-container {
+  height: 30vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 87vmin;
+}
+
+.hide {
+  display: none;
+}
+
+
+/*the play again button*/
+.scene {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10em;
+  height: 4em;
+  position: relative;
+ }
+ 
+ .cube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ccc;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.85s cubic-bezier(.17,.67,.14,.93);
+  transform-style: preserve-3d;
+  transform-origin: 100% 50%;
+  width: 10em;
+  height: 4em;
+  
+ }
+ 
+ .cube:hover {
+  transform: rotateX(-90deg);
+ }
+ 
+ .side {
+  box-sizing: border-box;
+  position: absolute;
+  display: inline-block;
+  height: 4em;
+  width: 10em;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 1.5em;
+  font-weight: bold;
+ }
+ 
+ .top {
+  background: #E6E8E6;/*top color*/
+  color: #222229;
+  transform: rotateX(90deg) translate3d(0, 0, 2em);
+  box-shadow: inset 0 0 0 5px #fff;
+  border-radius: 1rem;
+ }
+ 
+ .front {
+  background: #3F403F;/*front color*/
+  color: #fff;
+  box-shadow: inset 0 0 0 5px #fff;
+  transform: translate3d(0, 0, 2em);
+  border-radius: 1rem;
+ }
+
+ /*title*/
+ .button1 {
+  margin-top: 20px;
+  font-size: 25px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.button1:focus,
+button:hover {
+  color: #fff;
+}
+
+.button1:focus:after,
+button:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.button1:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+/* Define the keyframes for the winner animation */
+@keyframes winnerAnimation {
+  0% {
+      transform: scale(1);
+      background-color: #CED0CE;
+  }
+  50% {
+      transform: scale(1.2);
+      background-color: #FFD700; /* Gold color for the winner */
+  }
+  100% {
+      transform: scale(1);
+      background-color: #CED0CE;
+  }
+}
+
+/*footer*/
+
+ul {
+  list-style: none;
+}
+
+.example-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.example-2 .icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+.example-2 .icon-content .tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.example-2 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -50px;
+}
+.example-2 .icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: #4d4d4d;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.example-2 .icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.example-2 .icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+}
+.example-2 .icon-content a:hover {
+  color: white;
+}
+.example-2 .icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.example-2 .icon-content a:hover .filled {
+  height: 100%;
+}
+
+.example-2 .icon-content a[data-social="linkedin"] .filled,
+.example-2 .icon-content a[data-social="linkedin"] ~ .tooltip {
+  background-color: #0274b3;
+}
+
+.example-2 .icon-content a[data-social="github"] .filled,
+.example-2 .icon-content a[data-social="github"] ~ .tooltip {
+  background-color: #24262a;
+}
+.example-2 .icon-content a[data-social="instagram"] .filled,
+.example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5b51db,
+    #b33ab4,
+    #c135b4,
+    #e1306c,
+    #fd1f1f
+  );
+}
+.example-2 .icon-content a[data-social="youtube"] .filled,
+.example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
+  background-color: #ff0000;
+}
